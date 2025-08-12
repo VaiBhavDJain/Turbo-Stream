@@ -1,10 +1,18 @@
 <h1>Products</h1>
 
 <div class="products-grid">
-  <% @products.each do |p| %>
+  <% @products.each_with_index do |p, index| %>
     <div class="card">
       <h2><%= link_to p.title, product_path(p) %></h2>
       <p><%= number_to_currency(p.price) %></p>
+
+      <div class="timer-wrapper">
+        <span class="timer-label">Time:</span>
+        <span class="timer" data-start="1" id="timer-<%= index %>">1</span>
+        <span class="timer-sec">sec</span>
+      </div>
+      <br>
+
       <%= button_to "Add to cart", add_item_cart_path(product_id: p.id), method: :post, class: "btn" %>
     </div>
   <% end %>
