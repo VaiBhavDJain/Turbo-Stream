@@ -1,0 +1,5 @@
+<h1>Checkout</h1>
+<p>Total: <%= number_to_currency(@cart.total) %></p>
+<%= form_with model: @order, url: orders_path do |f| %>
+  <%= f.submit "Place Order" %>
+<% end %>

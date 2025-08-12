@@ -1,0 +1,11 @@
+<h1>Products</h1>
+
+<div class="products-grid">
+  <% @products.each do |p| %>
+    <div class="card">
+      <h2><%= link_to p.title, product_path(p) %></h2>
+      <p><%= number_to_currency(p.price) %></p>
+      <%= button_to "Add to cart", add_item_cart_path(product_id: p.id), method: :post, class: "btn" %>
+    </div>
+  <% end %>
+</div>
