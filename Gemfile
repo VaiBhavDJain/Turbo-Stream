@@ -61,3 +61,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "turbo-rails" # Turbo makes navigating between pages instant
+gem "stimulus-rails" # Stimulus is a library for building reactive web applications
