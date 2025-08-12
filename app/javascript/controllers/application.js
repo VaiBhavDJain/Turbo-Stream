@@ -7,3 +7,11 @@ application.debug = false
 window.Stimulus   = application
 
 export { application }
+
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  close() {
+    this.element.remove()
+  }
+}

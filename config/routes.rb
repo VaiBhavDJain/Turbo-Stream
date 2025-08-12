@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   root "products#index"
 
-  resources :products, only: [:index, :show]
+  resources :products
   
   resource :cart, only: [:show] do
     post 'add_item', to: 'carts#add_item'
