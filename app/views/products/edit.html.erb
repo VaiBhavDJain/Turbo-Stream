@@ -3,7 +3,7 @@
     <div class="modal-content">
       <h2>Edit Product</h2>
       
-      <%= form_with(model:  @product, local: false) do |form| %>
+      <%= form_with(model: @product, data: { turbo_frame: dom_id(@product) }, local: false) do |form| %>
         <% if  @product.errors.any? %>
             <div class="errors">
             <h2><%= pluralize( @product.errors.count, "error") %> prevented this product from being saved:</h2>
