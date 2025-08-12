@@ -1,25 +1,28 @@
 <%= turbo_frame_tag dom_id(product) do %>
   <div class="card">
-    <h2><%= link_to product.title, product_path(product) %></h2>
-    <p><%= number_to_currency(product.price) %></p>
-    <p> Stock: <%= product.stock %> </p>
+    <h2><%= link_to product.title, product_path(product), class: "product-title" %></h2>
+    <p class="price"><%= number_to_currency(product.price) %></p>
+    <p class="stock">Stock: <%= product.stock %></p>
 
-    <!-- Using Timer-Apply -->
-    <div class="timer-wrapper">
-      <span class="timer-label">Time: (JS Timer-Apply)</span>
-      <span class="timer" data-start="1">1</span>
-      <span class="timer-sec">sec</span>
+    <div class="timers-container">
+      <!-- JS Timer -->
+      <div class="timer-wrapper timer-js">
+        <span class="timer-label">JS Timer:</span>
+        <span class="timer" data-start="1">1</span>
+        <span class="timer-sec">sec</span>
+      </div>
+
+      <!-- Stimulus Timer -->
+      <div class="timer-wrapper timer-stimulus" data-controller="timer" data-timer-start-value="1">
+        <span class="timer-label">Stimulus Timer:</span>
+        <span class="timer" data-timer-target="output">1</span>
+        <span class="timer-sec">sec</span>
+      </div>
     </div>
 
-    <!-- Using Stimulus Timer -->
-    <div class="timer-wrapper" data-controller="timer" data-timer-start-value="<%= 1 %>">
-      <span class="timer-label"> Time: ( Stimulus Timer ) </span>
-     <span class="timer" data-timer-target="output">1</span> sec
-      <span class="timer-sec">sec</span>
+    <div class="actions">
+      <%= button_to "Add to cart", add_item_cart_path(product_id: product.id), method: :post, class: "btn btn-primary" %>
+      <%= link_to "Edit", edit_product_path(product), data: { turbo_frame: "modal" }, class: "btn btn-secondary" %>
     </div>
-
-    <br>
-    <%= button_to "Add to cart", add_item_cart_path(product_id: product.id), method: :post, class: "btn" %>
-    <%= link_to "Edit", edit_product_path(product), data: { turbo_frame: "modal" }, class: "btn btn-secondary" %>
   </div>
 <% end %>

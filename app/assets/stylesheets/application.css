@@ -1,103 +1,160 @@
-/* General reset */
+/* Reset & base */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f8f9fa;
   margin: 0;
   padding: 20px;
+  color: #212529;
 }
 
-/* Grid layout for product list */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
 }
 
-/* Card style */
+/* Card */
 .card {
   background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: box-shadow 0.2s ease;
+  transition: box-shadow 0.3s ease;
+  min-height: 320px;
 }
 
 .card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
-.card h2 {
-  font-size: 1.2rem;
+.product-title {
+  font-size: 1.4rem;
   margin-bottom: 8px;
+  font-weight: 700;
+  color: #222;
+  text-decoration: none;
 }
 
-.card p {
-  margin-bottom: 12px;
-  color: #555;
+.product-title:hover {
+  text-decoration: underline;
 }
 
-/* Buttons */
-.btn {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 14px;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: center;
-  display: inline-block;
-}
-
-.btn:hover {
-  background-color: #0056b3;
-}
-
-.btn-secondary {
-  background-color: #6c757d;
-}
-
-.btn-secondary:hover {
-  background-color: #545b62;
-}
-/* Timer box inside the card */
-.timer-wrapper {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  background: #e9ecef; /* Light grey to match Bootstrap-like theme */
-  border: 1px solid #dee2e6;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  color: #495057;
-  font-family: 'Courier New', monospace;
-  font-size: 0.95rem;
-}
-
-/* "Time:" label */
-.timer-label {
+.price {
+  font-size: 1.2rem;
   font-weight: 600;
+  color: #0d6efd;
+  margin-bottom: 10px;
+}
+
+.stock {
+  font-size: 0.95rem;
+  color: #6c757d;
+  margin-bottom: 20px;
+}
+
+/* Timer Container */
+.timers-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 24px;
+  flex-wrap: wrap; /* Add this */
+}
+
+/* Timer Wrapper */
+.timer-wrapper {
+  flex: 1 1 140px; /* flex-grow:1, flex-shrink:1, flex-basis:140px */
+  min-width: 140px; /* Ensure timer box doesn't shrink too much */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  user-select: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border: 1px solid transparent;
+}
+
+/* JS Timer styling */
+.timer-js {
+  background-color: #e9ecef;
+  border-color: #ced4da;
   color: #495057;
+}
+
+/* Stimulus Timer styling */
+.timer-stimulus {
+  background-color: #dbe9ff;
+  border-color: #a3c0ff;
+  color: #0d6efd;
+}
+
+/* Timer label */
+.timer-label {
+  font-weight: 700;
+  min-width: 90px;
+  color: inherit;
 }
 
 /* Timer number */
 .timer {
-  font-weight: bold;
-  font-size: 1rem;
-  color: #0d6efd; /* Blue to match .btn primary */
-  background: #e7f1ff; /* Light blue background */
-  padding: 2px 8px;
-  border-radius: 4px;
-  border: 1px solid #b6d4fe;
-  min-width: 36px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 4px 12px;
+  border-radius: 6px;
+  min-width: 44px;
   text-align: center;
+  background: rgba(0, 0, 0, 0.05);
+  color: inherit;
+  user-select: text;
 }
 
-/* "sec" text */
+/* Seconds text */
 .timer-sec {
+  font-size: 0.9rem;
   color: #6c757d;
-  font-size: 0.85rem;
+}
+
+/* Action buttons */
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 18px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  user-select: none;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #084fc7;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #545b62;
 }
